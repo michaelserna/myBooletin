@@ -14,17 +14,20 @@ angular.module('booletin.add',[])
   var today = new Date();
   $scope.today = today.toISOString();
   $scope.getImage = function(){
-    var files = document.getElementById('fileInput').files;
-    var file = files[0];
-    var reader = new FileReader();
-    reader.onloadend = function(){
-      var list = document.getElementsByClassName('preview');
-      for (var i = 0; i < list.length; i++) {
-        list[i].setAttribute('src', reader.result);
-      }
-      $scope.newEvent.photo = reader.result;
-    };
-    reader.readAsDataURL(file);
+    var uploadedImg = $scope.obj.flow.files[0];
+    console.log(uploadedImg);
+    $scope.newEvent.photo = uploadedImg;
+    // var files = document.getElementById('fileInput').files;
+    // var file = files[0];
+    // var reader = new FileReader();
+    // reader.onloadend = function(){
+    //   var list = document.getElementsByClassName('preview');
+    //   for (var i = 0; i < list.length; i++) {
+    //     list[i].setAttribute('src', reader.result);
+    //   }
+    //   $scope.newEvent.photo = reader.result;
+    // };
+    // reader.readAsDataURL(file);
   };
 
   $scope.addEvent = function(){
