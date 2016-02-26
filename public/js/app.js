@@ -6,7 +6,11 @@ angular.module('booletin', [
     'booletin.add',
     'ui.router',
     'firebase',
+<<<<<<< 26cc8349c7345206d5a02c2ae99e9623046ccc71
     
+=======
+    'flow'
+>>>>>>> Reorginized libs
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/search');

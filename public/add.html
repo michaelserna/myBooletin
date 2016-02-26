@@ -17,11 +17,21 @@
      }(document, 'script', 'facebook-jssdk'));
 
   </script>
- 
-<div id="add" class="paper floatLeft"  ng-init = 'initFB()'>
+
+<div id="add" class="paper floatLeft" flow-init ng-init = 'initFB()'>
     <div class="col-sm-8 col-sm-offset-1" ng-click = "change()">
         <h1 class="text-center" >Add Event</h1>
         <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate >
+           <!--  <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
+                <label>Zip Code</Label>
+                <input type="text" class="form-control" placeholder="e.g. 94117" name="zipCode" ng-model="newEvent.zipCode" required ng-minlength="5" ng-maxlength="5" valid-zip/>
+                <br>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.required">Required</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$pending.validZip">Checking if zip code is valid...</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.validZip">Not a valid zip code</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.minlength">Zip code must be 5 digits</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.maxlength">Zip code must be 5 digits</span>
+            </div> -->
             <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
                 <label>Event Name</label>
                 <input type="text" class="form-control" name="eventName" placeholder="e.g. Food Truck Friday" required ng-model="newEvent.eventName">
@@ -57,7 +67,9 @@
             </div>
             <br>
 
-            <input type='file' id='fileInput' custom-on-change="getImage" ng-model="testImage" />
+            <input type="file" flow-btn id="fileInput" custom-on-change="getImage" ng-model="testImage" />
+                Input or element as upload button
+            <span flow-btn>Upload File</span>
             <br>
             <img class="preview" src='' />
             <br>
