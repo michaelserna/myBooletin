@@ -5,7 +5,8 @@ angular.module('booletin', [
     'booletin.events',
     'booletin.add',
     'ui.router',
-    'firebase'
+    'firebase',
+    
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/search');
@@ -24,10 +25,10 @@ angular.module('booletin', [
         url: '/events/:search',
         templateUrl: 'events.html',
         controller: 'EventController'
-      })
+      });
   })
   .controller('mapController', function($scope, NgMap, $http) {
-    $scope.loc = {}
+    $scope.loc = {};
 
     $http({
       method: 'GET',
