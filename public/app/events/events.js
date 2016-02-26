@@ -35,6 +35,14 @@ angular.module('booletin.events', [])
   $scope.queryZip = {};
 
   $scope.validZip = false;
+
+  $scope.user = {};
+
+  $scope.sendEmail = function(){
+    var userEmail = $scope.user.email;
+    //send email
+  };
+
   $scope.getEvents = function() {
     //console.log(window.fbAsyncInit)
     Events.queryLocation($scope.queryZip)
