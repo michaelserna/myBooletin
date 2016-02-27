@@ -63,11 +63,11 @@
                 <br>
                 <span class="help-block" ng-show="addEventForm.time.$error.required">Required</span>
             </div>
-            <br><!-- Drag and drop using ng-flow to only use images -->
-            <div id="dragDrop" flow-drop flow-attrs="{accept:'image/*'}" flow-drag-enter="style={border: '4px solid #6AEB81'}" flow-drag-leave="style={}" ng-model="testImage" ng-style="style"/>
-                <span>Drag an image here or <label id="selectImg" flow-attrs="{accept:'image/*'}" flow-btn />select image</label></span>
+            <br>
+             <!-- <input type="file" id="fileInput" custom-on-change="getImage" ng-model="testImage" /> -->
+            <div id="dragDrop" flow-drop flow-attrs="{accept:'image/*'}" flow-drag-enter="style={border: '4px solid #6AEB81'}" flow-drag-leave="style={}" ng-style="style"/>
+                <span>Drag an image here or </span><label id="selectImg" flow-attrs="{accept:'image/*'}" flow-btn />select image</label>
             </div>
-            <img class="preview" src='' />
             <div class="thumbnail" ng-show="$flow.files.length">
               <img flow-img="$flow.files[0]" />
             </div>
