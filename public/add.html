@@ -19,8 +19,6 @@
 <div id="add" class="paper floatLeft" ng-init="initFB()" flow-init flow-name="image.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
     <div class="col-sm-8 col-sm-offset-1" ng-click = "change()">
         <h1 class="text-center" >Add Event</h1>
-        <form name="userForm">
-          </form>
         <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate>
            <!--  <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
                 <label>Zip Code</Label>
