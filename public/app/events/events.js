@@ -35,6 +35,18 @@ angular.module('booletin.events', [])
   $scope.queryZip = {};
 
   $scope.validZip = false;
+
+  $scope.user = {};
+
+  $scope.sendEmail = function(){
+    var userEmail = $scope.user.email;
+    var link = "mailto:collinadams04@gmail.com" +
+                "?subject=" + escape("This is my test subject") +
+                "&body=" + escape("This is my test body");
+
+    window.location.href = link;
+  };
+
   $scope.getEvents = function() {
     //console.log(window.fbAsyncInit)
     Events.queryLocation($scope.queryZip)
@@ -84,5 +96,76 @@ angular.module('booletin.events', [])
   $scope.initFB = function (){
     window.fbAsyncInit();  
   };
+
+  $scope.createUrlForNewCalendarEvent = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
+
+    var formatString = function(string){
+      var formattedString = encodeURI(string);
+      return formattedString;
+    };
+
+    var formattedEventName = formatString(unformattedEventName);
+
+    var formattedEventDescription = formatString(unformattedEventDescription);
+
+    var formattedStreetAddress = formatString(streetAddress);
+
+    var monthAsNumber;
+
+    var formatDate = function(unformattedDate){
+      var d = new Date(unformattedDate);
+
+      var month = '' + (d.getMonth() + 1);
+
+      monthAsNumber = parseInt(month);
+
+      var date = '' + d.getDate();
+      var year = d.getFullYear();
+
+      if(month.length < 2){
+        month = '0' + month;
+      }
+
+      if(date.length < 2){
+        date = '0' + date;
+      }
+
+      return year + month + date;
+    };
+
+    var formattedDate = formatDate(startDate);
+
+    var formatDateAndTime = function(unformattedTime){
+      var onlyNumbersInTime = '';
+      
+      for(var i = 1; i < 6; i++){
+          if(i === 3){
+              continue;
+          }
+          onlyNumbersInTime += unformattedTime[i];
+      }
+ 
+      if(monthAsNumber > 2 && monthAsNumber < 11){
+        var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 700;
+      }else{
+        var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
+      }
+
+      //add 1 hour for end time, so all events will pre-populate as only being an hour long
+      var endGMT = timeAsGMTNumber + 100;
+
+      formattedTime = 'T' + timeAsGMTNumber.toString() + '00Z/';
+      formattedEndTime = 'T' + endGMT.toString() + '00Z';
+
+      return formattedDate + formattedTime + formattedDate + formattedEndTime;
+    };
+
+    var formattedDateAndTime = formatDateAndTime(userInputtedTime);
+
+    var href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + formattedEventName + "&dates=" + formattedDateAndTime + "&details=" + formattedEventDescription + "&location=" + formattedStreetAddress + "&trp=true";
+
+    window.open(href, '_blank');
+  };
+
   
 });
