@@ -38,18 +38,14 @@
       <p ng-model='event.tags'><strong>Tags:</strong> {{event.tags}}</p>
 
 
-      <div ng-controller="RatingDemoCtrl">
-          <h4>Rating</h4>
+      <div ng-controller="RatingDemoCtrl" id = 'abc' ng-click = 'saveRating()'>
+          <h4>Rating of Event</h4>
           <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
           <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-
           <button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
-          <hr />
+          <pre style="margin:15px 0;">Rate: <b>{{rate}}</b></b></pre>
 
-      </div>
-
-    <div 
-
+          <div 
      class="fb-like"
      data-href="http://mybooletin.herokuapp.com/#/events/no"
      data-href="http://localhost:4569/#/events/no"
@@ -57,7 +53,12 @@
      data-width="450"
      data-show-faces="true">
    </div>
+
+      </div>
+
+    
    </div>
 </div>
+
 
 

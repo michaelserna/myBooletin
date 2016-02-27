@@ -1,6 +1,6 @@
 
 angular.module('booletin.rating',[])
-.controller('RatingDemoCtrl', function ($scope) {
+.controller('RatingDemoCtrl', function ($scope, $http) {
   $scope.rate = 7;
   $scope.max = 10;
   $scope.isReadonly = false;
@@ -17,4 +17,23 @@ angular.module('booletin.rating',[])
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
+  $scope.saveRating = function (){
+    // var rate;
+    var rate = $scope.rate;
+    //rate.toString()
+    console.log(rate);
+    
+    $http.post("/submit", {
+      params: {
+        rate: rate
+      },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},  
+    })
+    .then(function(data){ 
+      console.log('successfully sent rating of ', data)
+    }).catch(function(err){
+      console.log("The error ",err)
+    })  
+  };
 });
+
