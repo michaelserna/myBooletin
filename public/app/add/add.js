@@ -3,40 +3,42 @@ angular.module('booletin.add',[])
 .controller('addEvents',function ($scope, $firebaseArray, $firebaseObject, $state, $http){
   var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com"); //https://booletin.firebaseio.com/events
   $scope.events = $firebaseArray(dbConnection);
-  $scope.newEvent = {
-    photo: ""
-  };
+  $scope.newEvent = {};
+  $scope.image = {};
   $scope.change = function(){
-    console.log('change',$scope.newEvent.streetAddress );
     $scope.getLocation($scope.newEvent.streetAddress);
   };
   $scope.zip = '';
   var today = new Date();
   $scope.today = today.toISOString();
-  $scope.getImage = function(){
-    var files = document.getElementById('fileInput').files;
-    var file = files[0];
+
+  //async fn to convert img to base64 for storage in db
+  $scope.getImage = function(cb){
+    var files = $scope.image.flow.files;
+    var file = files[0].file;
     var reader = new FileReader();
     reader.onloadend = function(){
-      var list = document.getElementsByClassName('preview');
-      for (var i = 0; i < list.length; i++) {
-        list[i].setAttribute('src', reader.result);
-      }
-      $scope.newEvent.photo = reader.result;
+      cb(reader.result);
     };
-    reader.readAsDataURL(file);
+    if (file) {
+      //converts img to long data string
+      reader.readAsDataURL(file);
+    }
   };
 
   $scope.addEvent = function(){
-    $scope.events.$add({
-      zipCode : $scope.newEvent.zipCode,
-      eventName : $scope.newEvent.eventName,
-      streetAddress : $scope.newEvent.streetAddress,
-      eventDescription : $scope.newEvent.eventDescription,
-      startDate : $scope.newEvent.startDate.toString().slice(0, 15),
-      time : $scope.newEvent.time.toString().slice(15, 21) + ' ' + $scope.newEvent.time.toString().slice(35, 38),
-      photo : $scope.newEvent.photo,
-      tags : $scope.newEvent.tag
+    $scope.getImage(function(img) {
+      $scope.events.$add({
+        zipCode : $scope.newEvent.zipCode,
+        eventName : $scope.newEvent.eventName,
+        streetAddress : $scope.newEvent.streetAddress,
+        eventDescription : $scope.newEvent.eventDescription,
+        startDate : $scope.newEvent.startDate.toString().slice(0, 15),
+        //time.toString() === 'Thu Jan 01 1970 05:10:00 GMT-0800 (PST)'
+        time : $scope.newEvent.time.toString().slice(15, 21) + ' ' + $scope.newEvent.time.toString().slice(35, 38),
+        photo : img,
+        tags : $scope.newEvent.tag
+      });
     });
     $state.go('events', {search:"no"});
   };
@@ -60,6 +62,6 @@ angular.module('booletin.add',[])
     });
   };
   $scope.initFB = function (){
-    window.fbAsyncInit();  
+    window.fbAsyncInit();
   };
 });

@@ -1,14 +1,18 @@
 <div id="events" ng-init = 'initFB()'>
     <div class="paper floatLeft">
-       <h1>Events</h1>
-       <span><i>Showing {{events.length}} events for {{targetZipsString}}</i></span>
-       <form>
-       <input type="text" ng-model="searchText" placeholder='Search'>
-    <div class="pastEvents">
-      <p class="eventOccurrenceFilter" ng-click="showEvents('past')">Show past events</h6>
-      <p class="eventOccurrenceFilter" ng-click="showEvents('future')">Show future events</h6>
-    </div>
-       </form>
+      <h1>Events</h1>
+      <span><i>Showing {{events.length}} events for {{targetZipsString}}</i></span>
+      <form>
+        <input type="text" ng-model="searchText" placeholder='Search'>
+        <div class="pastEvents">
+          <p class="eventOccurrenceFilter" ng-click="showEvents('past')">
+            <h6>Show past events</h6>
+          </p>
+          <p class="eventOccurrenceFilter" ng-click="showEvents('future')">
+            <h6>Show future events</h6>
+          </p>
+        </div>
+      </form>
     </div>
 
     <div  ng-controller="mapController"class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
@@ -22,6 +26,14 @@
         </ng-map>
       </div>
       <p ng-model='event.eventDescription'><strong>Description:</strong> {{event.eventDescription}}</p>
+
+      <p>
+
+         <button ng-click ="createUrlForNewCalendarEvent(event.eventName, event.startDate, event.time, event.eventDescription, event.streetAddress)">Add this event to my calendar!</button>
+
+      </p>
+
+
       <p ng-model='event.startDate'><strong>Date:</strong> {{event.startDate}}</p>
       <p ng-model='event.time'><strong>Time:</strong> {{event.time}}</p>
       <img class='eventImage' ng-src='{{event.photo}}'/>

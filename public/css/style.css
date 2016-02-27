@@ -1,19 +1,13 @@
 body {
-  padding-top : 125px;
   /* space for navbar */
-  padding-left : 25px;
+  padding-top : 125px;
   background-image : url("../assets/bg-tile.jpg");
 }
 
 .eventImage {
-  max-width: 400px;
+  /*max-width: 400px;*/
   width: 100%;
   height: auto;
-}
-
-.event {
-  min-width : 300px;
-  max-width : 30%;
 }
 
 .navbar {
@@ -43,10 +37,9 @@ body {
 
 #search {
   background-color : white;
-  margin : -50px 0 0 -150px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  margin : 5% auto;
+  width: 40%;
+  height: 50%;
   display : block;
   box-shadow: 0px 0px 2px 2px #333;
   text-align: center;
@@ -57,22 +50,27 @@ body {
 #add {
   width: 40%;
 }
-.preview {
-  max-width: 100%;
-}
 
-#singleEvent .preview {
+/*#singleEvent .preview {
   max-width: 25%;
   float: right;
-}
+}*/
 
 .paper {
   background-color : white;
   padding : 15px;
-  margin : 15px;
+  margin : 17px;
   display : inline-block;
   box-shadow: 0px 0px 2px 2px #333;
+  min-width: 20%;
 }
+
+.event {
+  padding-top: 0px;
+  min-width : 300px;
+  max-width : 30%;
+}
+
 .floatLeft {
   float : left;
 }
@@ -99,4 +97,33 @@ p.eventOccurrenceFilter {
   margin-top: 10px;
   cursor: pointer;
   color: #9d9d9d;
+}
+
+.thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 15px 0px;
+}
+
+div#dragDrop {
+  color: #9d9d9d;
+  height:100px;
+  border: 2px dotted #9d9d9d;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 100px;
+}
+
+#selectImg {
+  cursor: pointer;
+  color: #337ab7;
+}
+
+#selectImg:hover {
+  text-decoration: underline;
+}
+
+.grey {
+  color: #9d9d9d;
+  font-size: 12px;
 }

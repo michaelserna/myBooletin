@@ -1,4 +1,4 @@
-   <script>
+<script>
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '1036179246446029',
@@ -7,7 +7,6 @@
       });
     };
 
-
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
@@ -15,13 +14,22 @@
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
+</script>
 
-  </script>
- 
-<div id="add" class="paper floatLeft"  ng-init = 'initFB()'>
+<div id="add" class="paper floatLeft" ng-init="initFB()" flow-init flow-name="image.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
     <div class="col-sm-8 col-sm-offset-1" ng-click = "change()">
         <h1 class="text-center" >Add Event</h1>
         <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate >
+           <!--  <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
+                <label>Zip Code</Label>
+                <input type="text" class="form-control" placeholder="e.g. 94117" name="zipCode" ng-model="newEvent.zipCode" required ng-minlength="5" ng-maxlength="5" valid-zip/>
+                <br>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.required">Required</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$pending.validZip">Checking if zip code is valid...</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.validZip">Not a valid zip code</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.minlength">Zip code must be 5 digits</span>
+                <span class="help-block" ng-show="addEventForm.zipCode.$error.maxlength">Zip code must be 5 digits</span>
+            </div> -->
             <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
                 <label>Event Name</label>
                 <input type="text" class="form-control" name="eventName" placeholder="e.g. Food Truck Friday" required ng-model="newEvent.eventName">
@@ -56,10 +64,15 @@
                 <span class="help-block" ng-show="addEventForm.time.$error.required">Required</span>
             </div>
             <br>
-
-            <input type='file' id='fileInput' custom-on-change="getImage" ng-model="testImage" />
-            <br>
-            <img class="preview" src='' />
+             <!-- <input type="file" id="fileInput" custom-on-change="getImage" ng-model="testImage" /> -->
+            <div id="dragDrop" flow-drop flow-attrs="{accept:'image/*'}" flow-drag-enter="style={border: '4px solid #6AEB81'}" flow-drag-leave="style={}" ng-style="style"/>
+                <span>Drag an image here or </span><span id="selectImg" flow-attrs="{accept:'image/*'}" flow-btn />select image</span>
+            </div>
+            <p class="grey">*images must be .png, .gif, .jpg, .jpeg</p>
+            <div class="thumbnail" ng-show="$flow.files.length">
+              <img flow-img="$flow.files[0]" />
+            </div>
+            <div class="btn btn-danger" ng-click="$flow.cancel()">Remove</div>
             <br>
             <br>
             <div class="form-group" ng-class="{'has-error': addEventForm.tags.$invalid}">
@@ -67,7 +80,7 @@
                 <input type="text" class="form-control" name="tags" placeholder="Tags" ng-model="newEvent.tag">
                 <br>
             </div>
-            <button type="submit" class="btn btn-primary" ng-click="addEvent()" ng-disabled="addEventForm.$invalid" ng-click = "change()" >Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="addEvent()" ng-disabled="addEventForm.$invalid">Submit</button>
         </form>
     </div>
     <!--bootstrap div-->
@@ -83,6 +96,7 @@
     <p ng-model='event.startDate'><strong>Date:</strong> {{newEvent.startDate.toString().slice(0, 15)}}</p>
     <p ng-model='event.time'><strong>Time:</strong> {{newEvent.time.toString().slice(15, 21) + ' ' + newEvent.time.toString().slice(35, 38)}}</p>
     <p ng-model='event.tags'><strong>Tags:</strong> {{newEvent.tag}}</p>
+    <br>
     <div
       class="fb-like"
       data-href= = "hhttp://mybooletin.herokuapp.com/#/add"
@@ -91,6 +105,5 @@
       data-width="450"
       data-show-faces="true">
     </div>
-
 </div>
 

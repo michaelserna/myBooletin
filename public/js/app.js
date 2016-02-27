@@ -6,7 +6,7 @@ angular.module('booletin', [
     'booletin.add',
     'ui.router',
     'firebase',
-    
+    'flow'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/search');
@@ -38,7 +38,7 @@ angular.module('booletin', [
       $scope.loc.y = response.data.results[0].geometry.location.lng || 1;
     }, function errorCallback(response) {
       console.log('not valid address', response);
-    })
+    });
     NgMap.getMap().then(function(map) {
       $scope.map = map;
     });
@@ -63,7 +63,7 @@ angular.module('booletin', [
         var def = $q.defer();
         var viewObject = {
           zipcode: viewValue
-        }
+        };
 
         Events.queryLocation(viewObject)
           .then(function(response) {
