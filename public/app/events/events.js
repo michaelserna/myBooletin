@@ -84,5 +84,32 @@ angular.module('booletin.events', [])
   $scope.initFB = function (){
     window.fbAsyncInit();  
   };
+
+  $scope.addGoogle = function(eventName, startDate, eventDescription){
+    // eventName = ;
+
+    var formatDate = function(unformattedDate){
+      var d = new Date(unformattedDate);
+      var month = '' + (d.getMonth() + 1);
+      var date = '' + d.getDate();
+      var year = d.getFullYear();
+
+      if(month.length < 2){
+        month = '0' + month;
+      }
+
+      if(date.length < 2){
+        date = '0' + date;
+      }
+
+      return year + month + date;
+    };
+
+    var formattedDate = formatDate(startDate);
+
+    console.log('this is eventname & startDate', eventName, formattedDate, eventDescription);
+    var href = "http://www.google.com/calendar/event?action=TEMPLATE&amp;text=" + "" + "&amp;dates=20110206T190000Z/20110206T200000Z&amp;details=Fake%20event%20for%20testing.%0A%0AFor%20details%2C%20visit%20http%3A%2F%2Fendzonerealty.com%2Fblog%2F2011%2Fcreate-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too%2F&amp;location=&amp;trp=false&amp;sprop=http%3A%2F%2Fendzonerealty.com%2F&amp;sprop=name:EndZoneRealty.com ";
+
+  };
   
 });
