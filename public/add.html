@@ -19,7 +19,7 @@
 <div id="add" class="paper floatLeft" ng-init="initFB()" flow-init flow-name="image.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
     <div class="col-sm-8 col-sm-offset-1" ng-click = "change()">
         <h1 class="text-center" >Add Event</h1>
-        <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate >
+        <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate>
            <!--  <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
                 <label>Zip Code</Label>
                 <input type="text" class="form-control" placeholder="e.g. 94117" name="zipCode" ng-model="newEvent.zipCode" required ng-minlength="5" ng-maxlength="5" valid-zip/>
@@ -30,38 +30,36 @@
                 <span class="help-block" ng-show="addEventForm.zipCode.$error.minlength">Zip code must be 5 digits</span>
                 <span class="help-block" ng-show="addEventForm.zipCode.$error.maxlength">Zip code must be 5 digits</span>
             </div> -->
-            <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$invalid}">
+            <div class="form-group" ng-class="{ 'has-error' : addEventForm.eventName.$invalid && addEventForm.eventName.$touched }">
                 <label>Event Name</label>
-                <input type="text" class="form-control" name="eventName" placeholder="e.g. Food Truck Friday" required ng-model="newEvent.eventName">
-                <br>
-                <span class="help-block" ng-show="addEventForm.eventName.$error.required">Required</span>
+                <input type="text" class="form-control" name="eventName" placeholder="e.g. Food Truck Friday" ng-model="newEvent.eventName" required>
+                <p ng-show="addEventForm.eventName.$invalid && addEventForm.eventName.$touched" class="help-block">Event name required</p>
+                <!-- <span class="help-block" ng-show="addEventForm.eventName.$error.required">Required</span> -->
             </div>
-            <div class="form-group" ng-class="{'has-error': addEventForm.address.$invalid}">
+            <div class="form-group" ng-class="{'has-error': addEventForm.address.$invalid && addEventForm.address.$touched}">
             <label>Street Address</label>
-                <input type="text" class="form-control" ng-model="newEvent.streetAddress"  placeholder="e.g. 123 Main Street, Apt 1A" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+                <input type="text" class="form-control" ng-model="newEvent.streetAddress"  placeholder="e.g. 123 Main Street, Apt 1A" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control" name="address" required>
+                <p ng-show="addEventForm.address.$invalid && addEventForm.address.$touched" class="help-block">Address required</p>
                 <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                 <div ng-show="noResults">
                   <i class="glyphicon glyphicon-remove"></i> No Results Found
                 </div>
             </div>
 
-            <div class="form-group" ng-class="{'has-error': addEventForm.description.$invalid}">
+            <div class="form-group" ng-class="{'has-error': addEventForm.description.$invalid && addEventForm.description.$touched}">
                 <label>Event Description</label>
-                <textarea type="text" class="form-control" name="description" placeholder="Description" require ng-model="newEvent.eventDescription"></textarea>
-                <br>
-                <span class="help-block" ng-show="addEventForm.description.$error.required">Required</span>
+                <textarea type="text" class="form-control" name="description" placeholder="Description" required ng-model="newEvent.eventDescription"></textarea>
+                <span class="help-block" ng-show="addEventForm.description.$invalid && addEventForm.description.$touched">Please enter a description</span>
             </div>
-            <div class="form-group" ng-class="{'has-error': addEventForm.date.$invalid}">
+            <div class="form-group" ng-class="{'has-error': addEventForm.date.$invalid && addEventForm.date.$touched}">
                 <label>Start Date</label>
-                <input type="date" class="form-control" name="date" min="2016-02-22" placeholder="Date" require ng-model="newEvent.startDate">
-                <br>
-                <span class="help-block" ng-show="addEventForm.date.$error.required">Required</span>
+                <input type="date" class="form-control" name="date" min="2016-02-22" placeholder="Date" required ng-model="newEvent.startDate">
+                <span class="help-block" ng-show="addEventForm.date.$invalid && addEventForm.date.$touched">Please enter a date</span>
             </div>
-            <div class="form-group" ng-class="{'has-error': addEventForm.time.$invalid}">
+            <div class="form-group" ng-class="{'has-error': addEventForm.time.$invalid && addEventForm.time.$touched}">
                 <label>Time</label>
-                <input type="time" class="form-control" name="time" placeholder="Time" require ng-model="newEvent.time">
-                <br>
-                <span class="help-block" ng-show="addEventForm.time.$error.required">Required</span>
+                <input type="time" class="form-control" name="time" placeholder="Time" required ng-model="newEvent.time">
+                <span class="help-block" ng-show="addEventForm.time.$invalid && addEventForm.time.$touched">Please enter a start time required</span>
             </div>
             <br>
              <!-- <input type="file" id="fileInput" custom-on-change="getImage" ng-model="testImage" /> -->
@@ -75,7 +73,7 @@
             <div class="btn btn-danger" ng-click="$flow.cancel()">Remove</div>
             <br>
             <br>
-            <div class="form-group" ng-class="{'has-error': addEventForm.tags.$invalid}">
+            <div class="form-group">
                 <label>Tags</label>
                 <input type="text" class="form-control" name="tags" placeholder="Tags" ng-model="newEvent.tag">
                 <br>
@@ -106,4 +104,5 @@
       data-show-faces="true">
     </div>
 </div>
+
 
