@@ -4,6 +4,8 @@ angular.module('booletin', [
     'booletin.services',
     'booletin.events',
     'booletin.add',
+    'ui.bootstrap',
+    'booletin.rating',
     'ui.router',
     'firebase',
     'flow'

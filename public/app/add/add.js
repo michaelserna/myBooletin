@@ -1,6 +1,6 @@
 angular.module('booletin.add',[])
 
-.controller('addEvents',function ($scope, $firebaseArray, $firebaseObject, $state, $http){
+.controller('addEvents',function($scope, $firebaseArray, $firebaseObject, $state, $http){
   var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com"); //https://booletin.firebaseio.com/events
   $scope.events = $firebaseArray(dbConnection);
   $scope.newEvent = {};
