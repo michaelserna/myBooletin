@@ -97,12 +97,33 @@ angular.module('booletin.events', [])
     window.fbAsyncInit();  
   };
 
-  $scope.createUrlForNewCalendarEvent = function(eventName, startDate, userInputtedTime, eventDescription){
+  $scope.createUrlForNewCalendarEvent = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
     // eventName = ;
+
+    var formatString = function(string){
+        var formattedString = encodeURI(string);
+    //   var formattedString = string.replace(/\s+/g, "+");
+    //   var formattedString = formattedString.replace(/^\w+/g, "%27");
+      return formattedString;
+    };
+
+
+
+    var formattedEventName = formatString(unformattedEventName);
+
+    var formattedEventDescription = formatString(unformattedEventDescription);
+
+    var formattedStreetAddress = formatString(streetAddress);
+
+    var monthAsNumber;
 
     var formatDate = function(unformattedDate){
       var d = new Date(unformattedDate);
+
       var month = '' + (d.getMonth() + 1);
+
+      monthAsNumber = parseInt(month);
+
       var date = '' + d.getDate();
       var year = d.getFullYear();
 
@@ -128,10 +149,15 @@ angular.module('booletin.events', [])
           }
           onlyNumbersInTime += unformattedTime[i];
       }
-      
-      var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
-      
-      //add 2hours 
+      //https://calendar.google.com/calendar/render?action=TEMPLATE&text=farmer%27s%20market2    &dates=20160604T131000Z/20160604T141000Z&details=eatin%20more%20veggies                                                                                                                                                &location&trp=false#eventpage_6      
+      //https://calendar.google.com/calendar/render?action=TEMPLATE&text=Example+event+-+Option+1&dates=20110206T190000Z/20110206T200000Z&details=Fake+event+for+testing.%0A%0AFor+details,+visit+http://endzonerealty.com/blog/2011/create-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too/&location&trp=false&sprop=http://endzonerealty.com/&sprop=name:EndZoneRealty.com&pli=1&sf=true&output=xml#eventpage_6
+
+      if(monthAsNumber > 2 && monthAsNumber < 11){
+        var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 700;
+      }else{
+        var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
+      }
+      //add 1 hour 
       var endGMT = timeAsGMTNumber + 100;
 
       formattedTime = 'T' + timeAsGMTNumber.toString() + '00Z/';
@@ -144,9 +170,7 @@ angular.module('booletin.events', [])
 
 
 
-
-    console.log('this is eventname & startDate', eventName, formattedDateAndTime, eventDescription);
-    var href = "http://www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20110206T190000Z/20110206T200000Z&amp;details=Fake%20event%20for%20testing.%0A%0AFor%20details%2C%20visit%20http%3A%2F%2Fendzonerealty.com%2Fblog%2F2011%2Fcreate-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too%2F&amp;location=&amp;trp=false&amp;sprop=http%3A%2F%2Fendzonerealty.com%2F&amp;sprop=name:EndZoneRealty.com ";
+    var href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + formattedEventName + "&dates=" + formattedDateAndTime + "&details=" + formattedEventDescription + "&location=" + formattedStreetAddress + "&trp=true";
 
   };
   
