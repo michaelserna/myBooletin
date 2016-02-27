@@ -97,6 +97,11 @@ angular.module('booletin.events', [])
     window.fbAsyncInit();  
   };
 
+  $scope.getDiretions = function(streetAddress){
+    var formattedStreetAddress = encodeURI(streetAddress);
+    window.open('https://maps.google.com?daddr='+formattedStreetAddress);
+  };
+
   $scope.createUrlForNewCalendarEvent = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
 
     var formatString = function(string){

@@ -127,3 +127,14 @@ div#dragDrop {
   color: #9d9d9d;
   font-size: 12px;
 }
+
+.mapfeatures {
+  list-style-type : none;
+  padding-left: 0;
+ 
+}
+.mapfeatures li{
+  display: inline;
+  margin-left: 0;
+  margin-right: 15%;
+} 
