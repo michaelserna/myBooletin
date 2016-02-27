@@ -6,7 +6,6 @@ angular.module('booletin.add',[])
   $scope.newEvent = {};
   $scope.test = {};
   $scope.change = function(){
-    console.log('change',$scope.newEvent.streetAddress );
     $scope.getLocation($scope.newEvent.streetAddress);
   };
   $scope.zip = '';

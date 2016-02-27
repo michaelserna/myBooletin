@@ -1,6 +1,7 @@
 Booletin
 ======
 Know what's going on in your neighborhood.
+[myBooletin](http://booletin.herokuapp.com/)
 
 Testing
 -----
@@ -16,15 +17,9 @@ grunt server
 grunt test
 ```
 
-
-## TODO
-
-v0.0.1
-Setup basic templating for client
-Connect with FireBase DB
 ## Author
 
-Arlen Neylon <arlen.m.neylon@gmail.com>
-Darko Jorgoski <darkogjorgoski@gmail.com>
-Dan Novograd <dnovograd@gmail.com>
-James Youn <jamesyoun710@gmail.com>
+Collin Adams | [Github](https://github.com/collinadams)
+Jessica Park | [Github](https://github.com/jeehaepark)
+Michael Serna | [Github](https://github.com/michaelserna)
+Alice Kao| [Github](https://github.com/alicekao)
