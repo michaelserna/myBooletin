@@ -34,6 +34,7 @@ angular.module('booletin.add',[])
         streetAddress : $scope.newEvent.streetAddress,
         eventDescription : $scope.newEvent.eventDescription,
         startDate : $scope.newEvent.startDate.toString().slice(0, 15),
+        //time.toString() === 'Thu Jan 01 1970 05:10:00 GMT-0800 (PST)'
         time : $scope.newEvent.time.toString().slice(15, 21) + ' ' + $scope.newEvent.time.toString().slice(35, 38),
         photo : img,
         tags : $scope.newEvent.tag

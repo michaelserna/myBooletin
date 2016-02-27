@@ -85,7 +85,7 @@ angular.module('booletin.events', [])
     window.fbAsyncInit();  
   };
 
-  $scope.addGoogle = function(eventName, startDate, eventDescription){
+  $scope.createUrlForNewCalendarEvent = function(eventName, startDate, userInputtedTime, eventDescription){
     // eventName = ;
 
     var formatDate = function(unformattedDate){
@@ -107,8 +107,34 @@ angular.module('booletin.events', [])
 
     var formattedDate = formatDate(startDate);
 
-    console.log('this is eventname & startDate', eventName, formattedDate, eventDescription);
-    var href = "http://www.google.com/calendar/event?action=TEMPLATE&amp;text=" + "" + "&amp;dates=20110206T190000Z/20110206T200000Z&amp;details=Fake%20event%20for%20testing.%0A%0AFor%20details%2C%20visit%20http%3A%2F%2Fendzonerealty.com%2Fblog%2F2011%2Fcreate-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too%2F&amp;location=&amp;trp=false&amp;sprop=http%3A%2F%2Fendzonerealty.com%2F&amp;sprop=name:EndZoneRealty.com ";
+    var formatDateAndTime = function(unformattedTime){
+      var onlyNumbersInTime = '';
+      
+      for(var i = 1; i < 6; i++){
+          if(i === 3){
+              continue;
+          }
+          onlyNumbersInTime += unformattedTime[i];
+      }
+      
+      var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
+      
+      //add 2hours 
+      var endGMT = timeAsGMTNumber + 100;
+
+      formattedTime = 'T' + timeAsGMTNumber.toString() + '00Z/';
+      formattedEndTime = 'T' + endGMT.toString() + '00Z';
+
+      return formattedDate + formattedTime + formattedDate + formattedEndTime;
+    };
+
+    var formattedDateAndTime = formatDateAndTime(userInputtedTime);
+
+
+
+
+    console.log('this is eventname & startDate', eventName, formattedDateAndTime, eventDescription);
+    var href = "http://www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20110206T190000Z/20110206T200000Z&amp;details=Fake%20event%20for%20testing.%0A%0AFor%20details%2C%20visit%20http%3A%2F%2Fendzonerealty.com%2Fblog%2F2011%2Fcreate-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too%2F&amp;location=&amp;trp=false&amp;sprop=http%3A%2F%2Fendzonerealty.com%2F&amp;sprop=name:EndZoneRealty.com ";
 
   };
   

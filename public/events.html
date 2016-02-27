@@ -28,7 +28,7 @@
       <p ng-model='event.eventDescription'><strong>Description:</strong> {{event.eventDescription}}</p>
       <p>
 
-         <button ng-click ="addGoogle(event.eventName, event.startDate, event.eventDescription)">Add this event to my calendar!</button>
+         <button ng-click ="createUrlForNewCalendarEvent(event.eventName, event.startDate, event.time, event.eventDescription)">Add this event to my calendar!</button>
       </p>
       <p ng-model='event.startDate'><strong>Date:</strong> {{event.startDate}}</p>
       <p ng-model='event.time'><strong>Time:</strong> {{event.time}}</p>
