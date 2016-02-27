@@ -58,10 +58,10 @@ body {
   width: 40%;
 }
 
-#singleEvent .preview {
+/*#singleEvent .preview {
   max-width: 25%;
   float: right;
-}
+}*/
 
 .paper {
   background-color : white;
