@@ -1,4 +1,4 @@
-   <script>
+<script>
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '1036179246446029',
@@ -7,7 +7,6 @@
       });
     };
 
-
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
@@ -15,10 +14,9 @@
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
+</script>
 
-  </script>
-
-<div id="add" class="paper floatLeft" flow-init ng-init="initFB()" flow-name="newEvent.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-files-submitted="$flow.upload()">
+<div id="add" class="paper floatLeft" ng-init="initFB()" flow-init flow-name="test.flow">
     <div class="col-sm-8 col-sm-offset-1" ng-click = "change()">
         <h1 class="text-center" >Add Event</h1>
         <form name="addEventForm" ng-submit="submitForm(addEventForm.$valid)" novalidate >
@@ -67,12 +65,11 @@
             </div>
             <br>
 
-            <!--  id="fileInput" custom-on-change="getImage" ng-model="testImage"  -->
-            <div type="file" custom-on-change="getImage" id="dragDrop" flow-drop flow-attrs="{accept:'image/*'}" flow-drag-enter="style={border: '4px solid #6AEB81'}" flow-drag-leave="style={}" ng-style="style"/>
+             <!-- <input type="file" id="fileInput" custom-on-change="getImage" ng-model="testImage" /> -->
+            <div id="dragDrop" flow-drop flow-attrs="{accept:'image/*'}" flow-drag-enter="style={border: '4px solid #6AEB81'}" flow-drag-leave="style={}" ng-model="testImage" ng-style="style"/>
                 <span>Drag an image here or <label id="selectImg" flow-attrs="{accept:'image/*'}" flow-btn />select image</label></span>
             </div>
-            <!-- <img class="preview" src='' /> -->
-
+            <img class="preview" src='' />
             <div class="thumbnail" ng-show="$flow.files.length">
               <img flow-img="$flow.files[0]" />
             </div>
@@ -100,7 +97,7 @@
     <p ng-model='event.startDate'><strong>Date:</strong> {{newEvent.startDate.toString().slice(0, 15)}}</p>
     <p ng-model='event.time'><strong>Time:</strong> {{newEvent.time.toString().slice(15, 21) + ' ' + newEvent.time.toString().slice(35, 38)}}</p>
     <p ng-model='event.tags'><strong>Tags:</strong> {{newEvent.tag}}</p>
-    photo: {{newEvent.flow.files[0]}}<br>
+    <br>
     <div
       class="fb-like"
       data-href= = "hhttp://mybooletin.herokuapp.com/#/add"
@@ -109,6 +106,5 @@
       data-width="450"
       data-show-faces="true">
     </div>
-
 </div>
 
