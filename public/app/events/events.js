@@ -98,16 +98,11 @@ angular.module('booletin.events', [])
   };
 
   $scope.createUrlForNewCalendarEvent = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
-    // eventName = ;
 
     var formatString = function(string){
-        var formattedString = encodeURI(string);
-    //   var formattedString = string.replace(/\s+/g, "+");
-    //   var formattedString = formattedString.replace(/^\w+/g, "%27");
+      var formattedString = encodeURI(string);
       return formattedString;
     };
-
-
 
     var formattedEventName = formatString(unformattedEventName);
 
@@ -149,15 +144,14 @@ angular.module('booletin.events', [])
           }
           onlyNumbersInTime += unformattedTime[i];
       }
-      //https://calendar.google.com/calendar/render?action=TEMPLATE&text=farmer%27s%20market2    &dates=20160604T131000Z/20160604T141000Z&details=eatin%20more%20veggies                                                                                                                                                &location&trp=false#eventpage_6      
-      //https://calendar.google.com/calendar/render?action=TEMPLATE&text=Example+event+-+Option+1&dates=20110206T190000Z/20110206T200000Z&details=Fake+event+for+testing.%0A%0AFor+details,+visit+http://endzonerealty.com/blog/2011/create-an-add-to-google-calendar-button-for-a-single-event-eventbrite-facebook-too/&location&trp=false&sprop=http://endzonerealty.com/&sprop=name:EndZoneRealty.com&pli=1&sf=true&output=xml#eventpage_6
-
+ 
       if(monthAsNumber > 2 && monthAsNumber < 11){
         var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 700;
       }else{
         var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
       }
-      //add 1 hour 
+
+      //add 1 hour for end time, so all events will pre-populate as only being an hour long
       var endGMT = timeAsGMTNumber + 100;
 
       formattedTime = 'T' + timeAsGMTNumber.toString() + '00Z/';
@@ -168,10 +162,10 @@ angular.module('booletin.events', [])
 
     var formattedDateAndTime = formatDateAndTime(userInputtedTime);
 
-
-
     var href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + formattedEventName + "&dates=" + formattedDateAndTime + "&details=" + formattedEventDescription + "&location=" + formattedStreetAddress + "&trp=true";
 
+    window.open(href, '_blank');
   };
+
   
 });
