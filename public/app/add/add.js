@@ -14,6 +14,9 @@ angular.module('booletin.add',[])
 
   //async fn to convert img to base64 for storage in db
   $scope.getImage = function(cb){
+    if (!($scope.image.flow.files.length)) {
+      return cb('');
+    }
     var files = $scope.image.flow.files;
     var file = files[0].file;
     var reader = new FileReader();
@@ -37,7 +40,7 @@ angular.module('booletin.add',[])
         //time.toString() === 'Thu Jan 01 1970 05:10:00 GMT-0800 (PST)'
         time : $scope.newEvent.time.toString().slice(15, 21) + ' ' + $scope.newEvent.time.toString().slice(35, 38),
         photo : img,
-        tags : $scope.newEvent.tag
+        tags : $scope.newEvent.tag || ''
       });
     });
     $state.go('events', {search:"no"});
@@ -50,12 +53,14 @@ angular.module('booletin.add',[])
         sensor: false
       }
     }).then(function(response){
+      if (response.data.results[0]) {
         var wholeAddressArr = response.data.results[0].address_components;
         for(var i = 0 ; i < wholeAddressArr.length ; i++){
           if(wholeAddressArr[i].types[0] === 'postal_code'){
             $scope.newEvent.zipCode = wholeAddressArr[i].long_name;
           }
         }
+      }
       return response.data.results.map(function(item){
         return item.formatted_address;
       });
