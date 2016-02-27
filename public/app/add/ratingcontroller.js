@@ -1,6 +1,6 @@
 
 angular.module('booletin.rating',[])
-.controller('RatingDemoCtrl', function ($scope, $http, $firebaseArray, $firebaseObject) {
+.controller('RatingDemoCtrl', function ($scope, $http, $firebaseArray, $firebaseObject, Events) {
   var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com"); 
   $scope.rating = $firebaseArray(dbConnection);
   $scope.max = 10;
@@ -18,30 +18,33 @@ angular.module('booletin.rating',[])
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
-  $scope.saveRating = function (){
-    // var rate;
-    var rate = $scope.rate;
-    //rate.toString()
-    console.log(rate);
+  // $scope.saveRating = function (){
+  //   // var rate;
+  //   var rate = $scope.rate;
+  //   //rate.toString()
+  //   console.log(rate);
     
-    $http.post("/submit", {
-      data: {
-        rate: rate
-      },
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},  
-    })
-    .then(function(data){ 
-      console.log('successfully sent rating of ', data)
-    }).catch(function(err){
-      console.log("The error ",err)
-    })  
-  };
+  //   $http.post("/submit", {
+  //     data: {
+  //       rate: rate
+  //     },
+  //     headers: {'Content-Type': 'application/x-www-form-urlencoded'},  
+  //   })
+  //   .then(function(data){ 
+  //     console.log('successfully sent rating of ', data)
+  //   }).catch(function(err){
+  //     console.log("The error ",err)
+  //   })  
+  // };
 
   $scope.saveRatingToFireBase = function(){
     console.log('hit saveRatingToFireBase')
-    var rate  = $scope.rating
+    
+    console.log(Events)
+    var rate  = $scope.rate;  
+    console.log(rate)
     $scope.rating.$add({
-      eventRating: rate
+      eventRating: rate, 
     })
   }
 

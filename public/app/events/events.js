@@ -8,6 +8,7 @@ angular.module('booletin.events', [])
     Events.targetZipsString = "all";
   } else {
     $scope.events = Events.events;
+    console.log($scope.events)
   }
   //filter function to only display events that haven't happened
   $scope.newEventsOnly = function(event) {
