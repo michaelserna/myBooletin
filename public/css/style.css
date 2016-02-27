@@ -135,5 +135,6 @@ div#dragDrop {
 }
 .mapfeatures li{
   display: inline;
-  margin: 10%;
+  margin-left: 0;
+  margin-right: 15%;
 } 
