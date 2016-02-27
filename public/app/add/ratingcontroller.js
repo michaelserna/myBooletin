@@ -1,7 +1,8 @@
 
 angular.module('booletin.rating',[])
-.controller('RatingDemoCtrl', function ($scope, $http) {
-  $scope.rate = 7;
+.controller('RatingDemoCtrl', function ($scope, $http, $firebaseArray, $firebaseObject) {
+  var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com"); 
+  $scope.rating = $firebaseArray(dbConnection);
   $scope.max = 10;
   $scope.isReadonly = false;
 
@@ -24,7 +25,7 @@ angular.module('booletin.rating',[])
     console.log(rate);
     
     $http.post("/submit", {
-      params: {
+      data: {
         rate: rate
       },
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},  
@@ -35,5 +36,14 @@ angular.module('booletin.rating',[])
       console.log("The error ",err)
     })  
   };
+
+  $scope.saveRatingToFireBase = function(){
+    console.log('hit saveRatingToFireBase')
+    var rate  = $scope.rating
+    $scope.rating.$add({
+      eventRating: rate
+    })
+  }
+
 });
 

@@ -38,7 +38,7 @@
       <p ng-model='event.tags'><strong>Tags:</strong> {{event.tags}}</p>
 
 
-      <div ng-controller="RatingDemoCtrl" id = 'abc' ng-click = 'saveRating()'>
+      <div ng-controller="RatingDemoCtrl" id = 'abc' ng-click = 'saveRatingToFireBase()'>
           <h4>Rating of Event</h4>
           <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
           <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
