@@ -4,9 +4,8 @@ angular.module('booletin.add',[])
   var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com"); //https://booletin.firebaseio.com/events
   $scope.events = $firebaseArray(dbConnection);
   $scope.newEvent = {};
-  $scope.test = {};
+  $scope.image = {};
   $scope.change = function(){
-    console.log('change',$scope.newEvent.streetAddress );
     $scope.getLocation($scope.newEvent.streetAddress);
   };
   $scope.zip = '';
@@ -15,7 +14,7 @@ angular.module('booletin.add',[])
 
   //async fn to convert img to base64 for storage in db
   $scope.getImage = function(cb){
-    var files = $scope.test.flow.files;
+    var files = $scope.image.flow.files;
     var file = files[0].file;
     var reader = new FileReader();
     reader.onloadend = function(){
