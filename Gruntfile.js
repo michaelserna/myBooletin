@@ -9,6 +9,9 @@ module.exports = function (grunt) {
       unit: {
         singleRun: true
       },
+      single: {
+        singlRun: true
+      },
       continuous: {
         background: true
       }

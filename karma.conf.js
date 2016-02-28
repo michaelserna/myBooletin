@@ -5,44 +5,53 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['browserify', 'mocha', 'chai'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
-    files: [ 
-      'specs/**/*.js'
+    files: [
+        'node_modules/angular/angular.js',
+        'node_modules/angular-ui-router/release/angular-ui-router.js',
+        'node_modules/angular-mocks/angular-mocks.js',
+        'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js',
+        'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js',
+        'https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js',
+        'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
+        'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
+        'http://maps.google.com/maps/api/js',
+        'public/**/*.js',
+        'specs/test.js'
     ],
 
     // list of files to exclude
     exclude: [
+        'karma.conf.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'specs/**/*.js': ['browserify']
+      // 'specs/**/*.js': ['browserify']
     },
 
-    browserify: {
-      debug: true,
-      transform: [ 'brfs' ]
-    },
-
+    // browserify: {
+    //   debug: true,
+    //   transform: [ 'brfs' ]
+    // },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    reporters: ['progress', 'kjhtml'],
 
     // web server port
-    port: 9000,
+    port: 9876,
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
@@ -52,15 +61,25 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
+    client: {
+        jasmine: {
+            reporter: 'html',
+            ui: 'bdd'
+        }
+    },
+
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
+    captureTimeout: 20000,
+
+    reportsSlowerThan: 500,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -68,6 +87,16 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    // concurrency: Infinity,
+
+    //Plugins
+    plugins: [
+        'karma-coverage',
+        'karma-jasmine',
+        'karma-jasmine-html-reporter',
+        'karma-mocha',
+        'karma-chai',
+        'karma-chrome-launcher'
+    ]
   })
 }
