@@ -38,15 +38,6 @@ angular.module('booletin.events', [])
 
   $scope.user = {};
 
-  $scope.sendEmail = function(){
-    var userEmail = $scope.user.email;
-    var link = "mailto:collinadams04@gmail.com" +
-                "?subject=" + escape("This is my test subject") +
-                "&body=" + escape("This is my test body");
-
-    window.location.href = link;
-  };
-
   $scope.getEvents = function() {
     //console.log(window.fbAsyncInit)
     Events.queryLocation($scope.queryZip)
