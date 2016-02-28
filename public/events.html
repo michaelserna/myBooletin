@@ -21,10 +21,13 @@
         <strong>Address:</strong> {{event.streetAddress}}<br>
         <ul class ="mapfeatures">
           <li>
-            <a ng-click="isCollapsedMap = !isCollapsedMap">Hide map</a>
+            <a ng-click="isCollapsedMap = !isCollapsedMap" ng-show="!isCollapsedMap">Hide map</a>
           </li>
           <li>
-            <a ng-click="getDiretions(event.streetAddress)" >Get direction</a>
+            <a ng-click="isCollapsedMap = !isCollapsedMap" ng-hide="!isCollapsedMap">Show map</a>
+          </li>
+          <li>
+            <a ng-click="getDiretions(event.streetAddress)">Get directions</a>
           </li>
         </ul>
       </p>
