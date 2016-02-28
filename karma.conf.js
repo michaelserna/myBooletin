@@ -25,7 +25,7 @@ module.exports = function(config) {
         'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
         'http://maps.google.com/maps/api/js',
         'public/**/*.js',
-        'specs/array-test.js'
+        'specs/test.js'
     ],
 
     // list of files to exclude
