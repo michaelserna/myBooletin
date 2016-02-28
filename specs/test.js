@@ -38,6 +38,27 @@ describe('EventController', function(){
     expect(typeof $scope.getEvents).toBe('function');
   });
 
+  it('events array should be empty', function() {
+    createController();
+    var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com");
+
+    $stateParams.search = 'no';
+    if ($stateParams.search === "no") {
+      $scope.events = $firebaseArray(dbConnection);
+      Events.targetZipsString = "all";
+    } else {
+      $scope.events = Events.events;
+    }
+
+    // $firebaseArray(dbConnection);
+    console.log('stateparams is ', $stateParams.search);
+    console.log('db connection is', dbConnection);
+    console.log('events array is', $scope.events);
+    expect($scope.events.length).toBe(0);
+  });
+
+
+
 
 });
 
