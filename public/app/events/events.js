@@ -162,6 +162,4 @@ angular.module('booletin.events', [])
 
     window.open(href, '_blank');
   };
-
-  
 });
