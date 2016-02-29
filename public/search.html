@@ -43,3 +43,47 @@
       </div>
   </form>
 </div>
+<!-- new Design search -->
+<div class="intro-header">
+  <div class="container">
+    <div class="row" ng-init = 'initFB()' >
+      <div class="col-lg-12">
+        <div class="intro-message">
+            <h1>Find events</h1>
+            <form name="zipSearch" ng-submit="getEvents()">
+              <h3>
+                <input type="text" ng-model="queryZip.zipcode" placeholder="Search a Zip Code">
+              </h3>
+              <p ng-show="invalidZip" style="color: red">Please enter a valid 5-digit zip</p>
+              <p ng-show="loading" style="color: green">loading ... :)</p>
+              <div id="homeButtons">
+                <hr class="intro-divider">
+                <ul class="list-inline intro-social-buttons">
+                  <li>
+                    <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Search Events</span></button>
+                  </li>
+                    <a ui-sref='add'>
+                      <li>
+                        <button type="button" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Add New Event</span></button>
+                      </li>
+                    </a>
+                </ul>
+              </div>
+            </form>
+            <div id="white">
+              <div
+            class="fb-like"
+            data-href="http://mybooletin.herokuapp.com/#/search"
+            data-href="http://localhost:4569/#/search"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
