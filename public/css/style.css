@@ -1,7 +1,8 @@
 body {
   /* space for navbar */
   padding-top : 125px;
-  background-image : url("../assets/bg-tile.jpg");
+  background-color: black;
+  /*background-image : url("../assets/bg-tile.jpg");*/
 }
 
 .eventImage {
