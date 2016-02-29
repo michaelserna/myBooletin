@@ -93,7 +93,7 @@ angular.module('booletin.events', [])
     window.open('https://maps.google.com?daddr='+formattedStreetAddress);
   };
 
-  $scope.createUrlForNewCalendarEvent = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
+  $scope.addEventToGoogleCalendar = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
 
     var formatString = function(string){
       var formattedString = encodeURI(string);
