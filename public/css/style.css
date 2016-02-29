@@ -1,7 +1,7 @@
 body {
   /* space for navbar */
   padding-top : 125px;
-  background-color: black;
+  background-color: #282828;
   /*background-image : url("../assets/bg-tile.jpg");*/
 }
 
@@ -143,3 +143,4 @@ div#dragDrop {
 a {
   cursor: pointer;
 }
+
