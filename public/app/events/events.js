@@ -1,7 +1,9 @@
 angular.module('booletin.events', [])
 
 .controller('EventController', function($scope, Events, $state, $firebaseArray, $stateParams) {
-  var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com");//https://booletin.firebaseio.com/events
+  var dbConnection = new Firebase("https://glowing-torch-8522.firebaseio.com");
+  //previous group's db connection
+  //https://booletin.firebaseio.com/events
 
   if ($stateParams.search === "no") {
     $scope.events = $firebaseArray(dbConnection);
@@ -84,18 +86,18 @@ angular.module('booletin.events', [])
         $scope.invalidZip = true;
       });
   };
-  $scope.initFB = function (){
-    window.fbAsyncInit();  
+  $scope.initFB = function () {
+    window.fbAsyncInit();
   };
 
-  $scope.getDiretions = function(streetAddress){
+  $scope.getDiretions = function(streetAddress) {
     var formattedStreetAddress = encodeURI(streetAddress);
     window.open('https://maps.google.com?daddr='+formattedStreetAddress);
   };
 
-  $scope.addEventToGoogleCalendar = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress){
+  $scope.addEventToGoogleCalendar = function(unformattedEventName, startDate, userInputtedTime, unformattedEventDescription, streetAddress) {
 
-    var formatString = function(string){
+    var formatString = function(string) {
       var formattedString = encodeURI(string);
       return formattedString;
     };
@@ -108,7 +110,7 @@ angular.module('booletin.events', [])
 
     var monthAsNumber;
 
-    var formatDate = function(unformattedDate){
+    var formatDate = function(unformattedDate) {
       var d = new Date(unformattedDate);
 
       var month = '' + (d.getMonth() + 1);
@@ -118,11 +120,11 @@ angular.module('booletin.events', [])
       var date = '' + d.getDate();
       var year = d.getFullYear();
 
-      if(month.length < 2){
+      if(month.length < 2) {
         month = '0' + month;
       }
 
-      if(date.length < 2){
+      if(date.length < 2) {
         date = '0' + date;
       }
 
@@ -131,19 +133,19 @@ angular.module('booletin.events', [])
 
     var formattedDate = formatDate(startDate);
 
-    var formatDateAndTime = function(unformattedTime){
+    var formatDateAndTime = function(unformattedTime) {
       var onlyNumbersInTime = '';
-      
-      for(var i = 1; i < 6; i++){
-          if(i === 3){
+
+      for(var i = 1; i < 6; i++) {
+          if(i === 3) {
               continue;
           }
           onlyNumbersInTime += unformattedTime[i];
       }
- 
-      if(monthAsNumber > 2 && monthAsNumber < 11){
+
+      if(monthAsNumber > 2 && monthAsNumber < 11) {
         var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 700;
-      }else{
+      } else {
         var timeAsGMTNumber = parseInt(onlyNumbersInTime) + 800;
       }
 
