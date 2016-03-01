@@ -1,0 +1,13 @@
+.paper{
+  background-color:  pink;
+}
+
+/*@import url(https://fonts.googleapis.com/css?family=Questrial);
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:700);
+*/
+body {
+  /* space for navbar */
+  padding-top : 125px;
+  /*background-color: #282828;*/
+  background-image : url("../assets/bg-tile.jpg");
+}

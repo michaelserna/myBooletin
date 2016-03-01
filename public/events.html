@@ -1,3 +1,5 @@
+<!-- <link rel="stylesheet" href="css/add-styles.css" /> -->
+<link rel="stylesheet" href="css/events-styles.css" />
 <div id="events" ng-init = 'initFB()'>
     <div class="paper floatLeft">
       <h1>Events</h1>
@@ -14,7 +16,7 @@
         </div>
       </form>
     </div>
-    <div  ng-controller="mapController"class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
+    <div id="eachpaper" ng-controller="mapController"class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
       <img class="center" src="assets/PushPin.png"/>
       <h3><p ng-model="event.eventName"><h4>Event:</h4> {{event.eventName}}</p></h3>
       <p ng-model="event.streetAddress">
@@ -55,4 +57,11 @@
    </div>
 </div>
 
-
+<script type="text/javascript">
+  function ran_col() { //function name
+      var color = '#'; // hexadecimal starting symbol
+      var letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
+      color += letters[Math.floor(Math.random() * letters.length)];
+      document.getElementById('eachpaper').style.background = color; // Setting the random color on your div element.
+  }
+</script>
