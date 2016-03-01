@@ -1,7 +1,8 @@
 body {
   /* space for navbar */
   padding-top : 125px;
-  background-image : url("../assets/bg-tile.jpg");
+  background-color: #282828;
+  /*background-image : url("../assets/bg-tile.jpg");*/
 }
 
 .eventImage {
@@ -127,3 +128,19 @@ div#dragDrop {
   color: #9d9d9d;
   font-size: 12px;
 }
+
+.mapfeatures {
+  list-style-type : none;
+  padding-left: 0;
+}
+
+.mapfeatures li{
+  display: inline;
+/*  margin-left: 0;
+  margin-right: 15%;*/
+}
+
+a {
+  cursor: pointer;
+}
+

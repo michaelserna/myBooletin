@@ -7,7 +7,7 @@ var port = process.env.PORT || 4569;
 var Promise = require('bluebird');
 var request = require('request');
 var bodyParser = require('body-parser');
-console.log(__dirname)
+console.log('dirname is: ', __dirname);
 app.use(express.static(__dirname + '/../public'));
 
 app.use(bodyParser.json());
@@ -18,14 +18,14 @@ app.use('/scripts', express.static(__dirname + '/../node_modules/'));
 
 
 app.listen(port);
-console.log('Listening to port', port)
+console.log('Listening to port', port);
 app.get('/api/events', function(req, res) {
   res.send('simple form');
 });
 
 //alternate key:
 //v3S00BxySOULTLpIOUYCM6uaDaaEmxbRB4SBGpaye4k7PKQEFOhsULCyWNciloaW
-var apiString = 'http://www.zipcodeapi.com/rest/BvCbcQg0j7pKL2fbadmunohNbXAS8BZJ6BUjrbjLiJv3LLeWYBrmZI9bFK3Ol2xs/radius.json/'
+var apiString = 'http://www.zipcodeapi.com/rest/JbAbVis6fD9peqndo4Xmrqaqfhnq7zMQKm2GEuMT8WjmmGzKLx7cXiDdz0EHzqyk/radius.json/'
 
 var apiCall = function(data) {
   return new Promise(function(resolve, reject) {
