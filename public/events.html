@@ -1,3 +1,5 @@
+<!-- <link rel="stylesheet" href="css/add-styles.css" /> -->
+<link rel="stylesheet" href="css/events-styles.css" />
 <div id="events" ng-init = 'initFB()'>
     <div class="paper floatLeft">
       <h1>Events</h1>
@@ -14,7 +16,7 @@
         </div>
       </form>
     </div>
-    <div  ng-controller="mapController"class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
+    <div id="eachpaper" ng-controller="mapController"class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
       <img class="center" src="assets/PushPin.png"/>
       <h3><p ng-model="event.eventName"><h4>Event:</h4> {{event.eventName}}</p></h3>
       <p ng-model="event.streetAddress">
@@ -54,5 +56,3 @@
      </div>
    </div>
 </div>
-
-
