@@ -1,6 +1,6 @@
 body {
   /* space for navbar */
-  padding-top : 125px;
+  padding-top : 100px;
   background-color: #282828;
   /*background-image : url("../assets/bg-tile.jpg");*/
 }
@@ -17,6 +17,7 @@ body {
 
 .navbar-fixed-top {
     min-height: 80px;
+    max-height: 100px;
 }
 
 .navbar-nav > li > a {
