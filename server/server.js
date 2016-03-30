@@ -25,7 +25,7 @@ app.get('/api/events', function(req, res) {
 
 //alternate key:
 //v3S00BxySOULTLpIOUYCM6uaDaaEmxbRB4SBGpaye4k7PKQEFOhsULCyWNciloaW
-var apiString = 'http://www.zipcodeapi.com/rest/JbAbVis6fD9peqndo4Xmrqaqfhnq7zMQKm2GEuMT8WjmmGzKLx7cXiDdz0EHzqyk/radius.json/'
+var apiString = 'http://www.zipcodeapi.com/rest/1Pv8a1f0f1lB5wAbiqHDEeb5581KS3jTSO12Qg35ioHnVhzdIgRmu2sAbul4xEXp/radius.json/'
 
 var apiCall = function(data) {
   return new Promise(function(resolve, reject) {

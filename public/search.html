@@ -27,9 +27,9 @@
             <h1>Find events</h1>
             <form name="zipSearch" ng-submit="getEvents()">
               <h3>
-                <input type="text" ng-model="queryZip.zipcode" placeholder="Search a Zip Code">
+                <input type="text" ng-model="queryZip.zipcode">
               </h3>
-              <p ng-show="invalidZip" style="color: red">Please enter a valid 5-digit zip</p>
+              <p ng-show="invalidZip" style="color: red">External API Error. Please click 'View All Events' above.</p>
               <p ng-show="loading" style="color: green">loading ... :)</p>
               <div id="homeButtons">
                 <hr class="intro-divider">
