@@ -34,7 +34,9 @@ angular.module('booletin.events', [])
     Events.targetZipsString = "all";
   }
   $scope.targetZipsString = Events.targetZipsString;
-  $scope.queryZip = {};
+  $scope.queryZip = {
+    zipcode: 94105
+  };
 
   $scope.validZip = false;
 
