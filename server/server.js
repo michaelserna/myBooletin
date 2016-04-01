@@ -1,13 +1,15 @@
 // server.js
 // basic express server to serve all static files from public directory
-
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 4569;
 var Promise = require('bluebird');
 var request = require('request');
 var bodyParser = require('body-parser');
+
 console.log('dirname is: ', __dirname);
+
 app.use(express.static(__dirname + '/../public'));
 
 app.use(bodyParser.json());
@@ -25,7 +27,8 @@ app.get('/api/events', function(req, res) {
 
 //alternate key:
 //v3S00BxySOULTLpIOUYCM6uaDaaEmxbRB4SBGpaye4k7PKQEFOhsULCyWNciloaW
-var apiString = 'http://www.zipcodeapi.com/rest/1Pv8a1f0f1lB5wAbiqHDEeb5581KS3jTSO12Qg35ioHnVhzdIgRmu2sAbul4xEXp/radius.json/'
+
+var apiString = process.env.ZIPCODE_API;
 
 var apiCall = function(data) {
   return new Promise(function(resolve, reject) {
