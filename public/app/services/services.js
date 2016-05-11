@@ -1,7 +1,7 @@
 angular.module('booletin.services', [])
 
-.factory('Events', function($http) {
-  var queryLocation = function(zip) {
+.factory('Events', function ($http) {
+  var queryLocation = function (zip) {
 
     return $http({
       method: 'POST',
@@ -10,7 +10,7 @@ angular.module('booletin.services', [])
     });
   };
 
-  var addEvent = function(eventData) {
+  var addEvent = function (eventData) {
     return $http({
       method: 'POST',
       url: '/api/events',

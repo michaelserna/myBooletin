@@ -21,7 +21,7 @@ app.use('/scripts', express.static(__dirname + '/../node_modules/'));
 
 app.listen(port);
 console.log('Listening to port', port);
-app.get('/api/events', function(req, res) {
+app.get('/api/events', function (req, res) {
   res.send('simple form');
 });
 
@@ -30,10 +30,10 @@ app.get('/api/events', function(req, res) {
 
 var apiString = process.env.ZIPCODE_API;
 
-var apiCall = function(data) {
-  return new Promise(function(resolve, reject) {
+var apiCall = function (data) {
+  return new Promise(function (resolve, reject) {
     request(apiString + data.zipcode + '/1/mile/',
-      function(error, response, body) {
+      function (error, response, body) {
         if (error) {
           return console.log("error: ", error);
         }
@@ -44,10 +44,10 @@ var apiCall = function(data) {
   });
 };
 
-app.post('/api/location', function(req, res) {
+app.post('/api/location', function (req, res) {
 
   var firstpromise = apiCall(req.body);
-  Promise.all([firstpromise]).then(function(results) {
+  Promise.all([firstpromise]).then(function (results) {
     res.send(results);
-  }).catch(function() {});
+  }).catch(function () {});
 });

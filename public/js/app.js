@@ -8,7 +8,7 @@ angular.module('booletin', [
     'firebase',
     'flow'
   ])
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/search');
     $stateProvider
       .state('search', {
@@ -27,7 +27,7 @@ angular.module('booletin', [
         controller: 'EventController'
       });
   })
-  .controller('mapController', function($scope, NgMap, $http) {
+  .controller('mapController', function ($scope, NgMap, $http) {
     $scope.loc = {};
 
     $http({
@@ -39,34 +39,34 @@ angular.module('booletin', [
     }, function errorCallback(response) {
       console.log('not valid address', response);
     });
-    NgMap.getMap().then(function(map) {
+    NgMap.getMap().then(function (map) {
       $scope.map = map;
     });
   })
 
-.directive('customOnChange', function() {
+.directive('customOnChange', function () {
   return {
     restrict: 'A',
-    link: function(scope, element, attrs) {
+    link: function (scope, element, attrs) {
       var onChangeHandler = scope.$eval(attrs.customOnChange);
       element.bind('change', onChangeHandler);
     }
   };
 })
 
-.directive('validZip', function($q, Events) {
+.directive('validZip', function ($q, Events) {
   return {
     restrict: "A",
     require: "ngModel",
-    link: function(scope, elm, attrs, ctrl) {
-      ctrl.$asyncValidators.validZip = function(modelValue, viewValue) {
+    link: function (scope, elm, attrs, ctrl) {
+      ctrl.$asyncValidators.validZip = function (modelValue, viewValue) {
         var def = $q.defer();
         var viewObject = {
           zipcode: viewValue
         };
 
         Events.queryLocation(viewObject)
-          .then(function(response) {
+          .then(function (response) {
             if (response.data[0]['zip_codes']) {
               def.resolve();
             } else {

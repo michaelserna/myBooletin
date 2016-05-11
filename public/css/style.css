@@ -21,12 +21,13 @@ body {
 }
 
 .navbar-nav > li > a {
-    padding-top: 35%;
-    padding-bottom: 35%;
-/*    line-height: 80px;*/
+  padding-top: 35%;
+  padding-bottom: 35%;
+  /*    line-height: 80px;*/
 }
+
 .navbar-right {
-    margin-right: 25px;
+  margin-right: 25px;
 }
 
 #homeButtons {
@@ -38,20 +39,21 @@ body {
 }
 
 #search {
-  background-color : white;
-  margin : 5% auto;
+  background-color: white;
+  margin: 5% auto;
   width: 40%;
   height: 50%;
-  display : block;
+  display: block;
   box-shadow: 0px 0px 2px 2px #333;
   text-align: center;
-  padding-left:5%;
-  padding-right:5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #add {
   width: 40%;
 }
+
 
 /*#singleEvent .preview {
   max-width: 25%;
@@ -59,29 +61,29 @@ body {
 }*/
 
 .paper {
-  background-color : white;
-  padding : 15px;
-  margin : 17px;
-  display : inline-block;
+  background-color: white;
+  padding: 15px;
+  margin: 17px;
+  display: inline-block;
   box-shadow: 0px 0px 2px 2px #333;
   min-width: 20%;
 }
 
 .event {
   padding-top: 0px;
-  min-width : 300px;
-  max-width : 30%;
+  min-width: 300px;
+  max-width: 30%;
 }
 
 .floatLeft {
-  float : left;
+  float: left;
 }
 
 .center {
-  display : block;
-  margin : auto;
-  width : 50px;
-  height : 50px;
+  display: block;
+  margin: auto;
+  width: 50px;
+  height: 50px;
 }
 
 #singleEvent {
@@ -109,7 +111,7 @@ p.eventOccurrenceFilter {
 
 div#dragDrop {
   color: #9d9d9d;
-  height:100px;
+  height: 100px;
   border: 2px dotted #9d9d9d;
   border-radius: 4px;
   text-align: center;
@@ -131,13 +133,13 @@ div#dragDrop {
 }
 
 .mapfeatures {
-  list-style-type : none;
+  list-style-type: none;
   padding-left: 0;
 }
 
-.mapfeatures li{
+.mapfeatures li {
   display: inline;
-/*  margin-left: 0;
+  /*  margin-left: 0;
   margin-right: 15%;*/
 }
 

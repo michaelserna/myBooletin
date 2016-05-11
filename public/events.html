@@ -38,21 +38,40 @@
           <marker position="{{loc.x}}, {{loc.y}}"></marker>
         </ng-map>
       </div>
-      <p ng-model="event.eventDescription"><strong>Description:</strong> {{event.eventDescription}}</p>
-      <p>
-         <button ng-click ="addEventToGoogleCalendar(event.eventName, event.startDate, event.time, event.eventDescription, event.streetAddress)">Add this event to my calendar!</button>
-      </p>
-      <p ng-model="event.startDate"><strong>Date:</strong> {{event.startDate}}</p>
-      <p ng-model="event.time"><strong>Time:</strong> {{event.time}}</p>
-      <img class="eventImage" ng-src="{{event.photo}}"/>
-      <p ng-model="event.tags"><strong>Tags:</strong> {{event.tags}}</p>
-      <div 
-       class="fb-like"
-       data-href="http://mybooletin.herokuapp.com/#/events/no"
-       data-href="http://localhost:4569/#/events/no"
-       data-share="true"
-       data-width="450"
-       data-show-faces="true">
-     </div>
-   </div>
+    </form>
+  </div>
+  <div ng-controller="mapController" class="paper floatLeft event" ng-repeat="event in events | filter: dateSort | filter:searchText | orderBy: 'startDate'">
+    <img class="center" src="assets/PushPin.png" />
+    <h3><p ng-model="event.eventName"><h4>Event:</h4> {{event.eventName}}</p></h3>
+    <p ng-model="event.streetAddress">
+      <strong>Address:</strong> {{event.streetAddress}}
+      <br>
+      <ul class="mapfeatures">
+        <li>
+          <a ng-click="isCollapsedMap = !isCollapsedMap" ng-show="!isCollapsedMap">Hide map</a>
+        </li>
+        <li>
+          <a ng-click="isCollapsedMap = !isCollapsedMap" ng-hide="!isCollapsedMap">Show map</a>
+        </li>
+        <li>
+          <a ng-click="getDiretions(event.streetAddress)">Get directions</a>
+        </li>
+      </ul>
+    </p>
+    <div uib-collapse="isCollapsedMap">
+      <ng-map default-style="true" zoom="16" scrollwheel="false" center="{{loc.x}}, {{loc.y}}">
+        <marker position="{{loc.x}}, {{loc.y}}"></marker>
+      </ng-map>
+    </div>
+    <p ng-model="event.eventDescription"><strong>Description:</strong> {{event.eventDescription}}</p>
+    <p>
+      <button ng-click="addEventToGoogleCalendar(event.eventName, event.startDate, event.time, event.eventDescription, event.streetAddress)">Add this event to my calendar!</button>
+    </p>
+    <p ng-model="event.startDate"><strong>Date:</strong> {{event.startDate}}</p>
+    <p ng-model="event.time"><strong>Time:</strong> {{event.time}}</p>
+    <img class="eventImage" ng-src="{{event.photo}}" />
+    <p ng-model="event.tags"><strong>Tags:</strong> {{event.tags}}</p>
+    <div class="fb-like" data-href="http://mybooletin.herokuapp.com/#/events/no" data-href="http://localhost:4569/#/events/no" data-share="true" data-width="450" data-show-faces="true">
+    </div>
+  </div>
 </div>

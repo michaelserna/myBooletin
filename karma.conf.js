@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Fri Feb 12 2016 12:19:44 GMT-0800 (PST)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,22 +15,22 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'node_modules/angular/angular.js',
-        'node_modules/angular-ui-router/release/angular-ui-router.js',
-        'node_modules/angular-mocks/angular-mocks.js',
-        'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js',
-        'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js',
-        'https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js',
-        'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
-        'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
-        'http://maps.google.com/maps/api/js',
-        'public/**/*.js',
-        'specs/test.js'
+      'node_modules/angular/angular.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js',
+      'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js',
+      'https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js',
+      'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
+      'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
+      'http://maps.google.com/maps/api/js',
+      'public/**/*.js',
+      'specs/test.js'
     ],
 
     // list of files to exclude
     exclude: [
-        'karma.conf.js'
+      'karma.conf.js'
     ],
 
 
@@ -62,10 +62,10 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     client: {
-        jasmine: {
-            reporter: 'html',
-            ui: 'bdd'
-        }
+      jasmine: {
+        reporter: 'html',
+        ui: 'bdd'
+      }
     },
 
 
@@ -91,12 +91,12 @@ module.exports = function(config) {
 
     //Plugins
     plugins: [
-        'karma-coverage',
-        'karma-jasmine',
-        'karma-jasmine-html-reporter',
-        'karma-mocha',
-        'karma-chai',
-        'karma-chrome-launcher'
+      'karma-coverage',
+      'karma-jasmine',
+      'karma-jasmine-html-reporter',
+      'karma-mocha',
+      'karma-chai',
+      'karma-chrome-launcher'
     ]
-  })
-}
+  });
+};

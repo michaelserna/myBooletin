@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='booletin' ng-init = 'window.fbAsyncInit()'>
+<html ng-app='booletin' ng-init='window.fbAsyncInit()'>
 
 <head>
     <title>myBooletin</title>
@@ -22,38 +22,37 @@
         <a class="navbar-brand" ui-sref='search'>
           <h1>myBooletin</h1></a>
       </div>
-        <p class="navbar-text navbar-right">see what's going on in your neighborhood</p>
-        <ul class="nav navbar-nav">
-          <li><a ui-sref='add'>add new event</a></li>
-          <li><a ui-sref='events({search:"no"})'>view all events</a></li>
-        </ul>
+      <p class="navbar-text navbar-right">see what's going on in your neighborhood</p>
+      <ul class="nav navbar-nav">
+        <li><a ui-sref='add'>add new event</a></li>
+        <li><a ui-sref='events({search:"no"})'>view all events</a></li>
+      </ul>
     </div>
   </nav>
-
   <div ui-view>
-
   </div>
-
   <!-- // <script src="/scripts/angular/angular.js"></script> -->
-   <div id="fb-root"></div>
-   <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1036179246446029',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
+  <div id="fb-root"></div>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '1036179246446029',
+      xfbml: true,
+      version: 'v2.5'
+    });
+  };
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
   </script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
   <script src="http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js"></script>
@@ -63,11 +62,12 @@
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
   <script src="app/events/events.js"></script>
-
   <script src="app/add/add.js"></script>
   <script src="/js/app.js"></script>
+  <link href="/css/style.css" rel="stylesheet" />
   <script src="http://maps.google.com/maps/api/js"></script>
   <script src="libs/ng-map.min.js"></script>
   <script src="libs/ng-flow-standalone.min.js"></script>
 </body>
+
 </html>
